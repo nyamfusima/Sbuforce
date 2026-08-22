@@ -199,3 +199,80 @@
   height: 3px;
   background-color: var(--color-gold);
 }
+
+/*
+ * Motion system.
+ *
+ * Two primitives only: a single-block scroll reveal (.reveal, driven by the
+ * useReveal hook) and a staggered group reveal for card grids (.reveal-group,
+ * children opt in with .reveal-item and an inline --reveal-i index). Both are
+ * one-shot (element stays visible once revealed) and both collapse to an
+ * instant, transform-free state under prefers-reduced-motion. Don't add a
+ * third animation primitive or an animation library — extend these two.
+ */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@utility reveal-item {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+}
+
+.reveal-group.reveal-visible .reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Collapsible mobile nav panel — animates height via grid-template-rows so no JS measuring is needed. */
+@utility nav-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility nav-collapse-open {
+  grid-template-rows: 1fr;
+}
+
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.9);
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal,
+  .reveal-item {
+    opacity: 1;
+    transform: none;
+  }
+}

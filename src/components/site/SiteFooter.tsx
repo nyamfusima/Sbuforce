@@ -16,7 +16,7 @@ export function SiteFooter() {
           />
           <p className="font-display mt-4 text-lg">{company.legalName}</p>
           <p className="mt-2 text-xs text-primary-foreground/60">
-            Reg No: {company.regNo} &nbsp;|&nbsp; PSIRA No: {company.psiraNo}
+            PSIRA Registered Security Company
           </p>
         </div>
 
@@ -39,8 +39,13 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
-              <a href="#credentials" className="hover:text-gold">
-                Credentials
+              <a href="#trust" className="hover:text-gold">
+                Trust
+              </a>
+            </li>
+            <li>
+              <a href="#faq" className="hover:text-gold">
+                FAQ
               </a>
             </li>
             <li>

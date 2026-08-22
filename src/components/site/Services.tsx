@@ -1,51 +1,107 @@
 import {
   UserRound,
   Footprints,
-  MonitorPlay,
   Home,
   Siren,
+  MonitorPlay,
   Cctv,
   BellRing,
   Zap,
   Fingerprint,
 } from "lucide-react";
 import installationsImage from "@/assets/installations.jpg";
-import { services, installations, cctvDetail } from "@/lib/company";
+import { serviceGroups, installations, cctvDetail } from "@/lib/company";
+import { Reveal, RevealGroup } from "@/components/site/Reveal";
 
-const icons = [UserRound, Footprints, MonitorPlay, Home, Siren, Cctv, BellRing, Zap, Fingerprint] as const;
+const groupIcons = [
+  [UserRound, Footprints, Home, Siren],
+  [MonitorPlay, Cctv, BellRing, Zap, Fingerprint],
+] as const;
 
 export function Services() {
   return (
     <section id="services" className="bg-primary py-20 text-primary-foreground sm:py-24">
       <div className="shell">
-        <p className="eyebrow">Our Services</p>
-        <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
-          Comprehensive security solutions
-        </h2>
-        <span className="gold-rule mt-5" />
+        <Reveal>
+          <p className="eyebrow">Our Services</p>
+          <h2 className="mt-3 max-w-2xl text-3xl font-bold sm:text-4xl">
+            Comprehensive security solutions
+          </h2>
+          <span className="gold-rule mt-5" />
+        </Reveal>
 
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-sm bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => {
-            const Icon = icons[i % icons.length]!;
-            return (
-              <li key={service.title} className="bg-primary p-7 transition-colors hover:bg-graphite">
-                <Icon aria-hidden="true" className="size-6 text-gold" />
-                <h3 className="mt-5 text-lg font-semibold">{service.title}</h3>
-                {service.description && (
-                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">{service.description}</p>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        {serviceGroups.map((group, groupIndex) => {
+          const icons = groupIcons[groupIndex]!;
+          const isPrimary = groupIndex === 0;
+          return (
+            <div key={group.title} className={groupIndex === 0 ? "mt-14" : "mt-16"}>
+              <Reveal>
+                <h3 className="text-2xl font-semibold">{group.title}</h3>
+                <p className="mt-2 text-sm text-primary-foreground/60">{group.intro}</p>
+                <span className="gold-rule mt-4" />
+              </Reveal>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:items-center">
+              {isPrimary ? (
+                <RevealGroup as="ul" className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {group.items.map((service, i) => {
+                    const Icon = icons[i % icons.length]!;
+                    return (
+                      <li
+                        key={service.title}
+                        className="reveal-item border border-white/12 bg-graphite p-7 transition-all duration-200 hover:-translate-y-1 hover:border-gold/40"
+                        style={{ "--reveal-i": i } as React.CSSProperties}
+                      >
+                        <Icon aria-hidden="true" className="size-6 text-gold" />
+                        <h4 className="mt-5 text-lg font-semibold">{service.title}</h4>
+                        {service.description && (
+                          <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                            {service.description}
+                          </p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </RevealGroup>
+              ) : (
+                <RevealGroup
+                  as="ul"
+                  className="mt-8 grid gap-px overflow-hidden rounded-sm bg-white/10 sm:grid-cols-2"
+                >
+                  {group.items.map((service, i) => {
+                    const Icon = icons[i % icons.length]!;
+                    const isLastOdd = group.items.length % 2 === 1 && i === group.items.length - 1;
+                    return (
+                      <li
+                        key={service.title}
+                        className={`reveal-item bg-primary p-7 transition-colors hover:bg-graphite ${isLastOdd ? "sm:col-span-2" : ""}`}
+                        style={{ "--reveal-i": i } as React.CSSProperties}
+                      >
+                        <Icon aria-hidden="true" className="size-6 text-gold" />
+                        <h4 className="mt-5 text-lg font-semibold">{service.title}</h4>
+                        {service.description && (
+                          <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                            {service.description}
+                          </p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </RevealGroup>
+              )}
+            </div>
+          );
+        })}
+
+        <Reveal as="div" className="mt-16 grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <h3 className="text-2xl font-semibold">Installations, Maintenance and Repairs</h3>
             <span className="gold-rule mt-4" />
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2">
               {installations.map((item) => (
-                <li key={item} className="flex items-start gap-2 text-sm text-primary-foreground/80">
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-sm text-primary-foreground/80"
+                >
                   <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 bg-gold" />
                   {item}
                 </li>
@@ -59,15 +115,17 @@ export function Services() {
               ))}
             </div>
           </div>
-          <img
-            src={installationsImage}
-            alt="Technician installing an outdoor CCTV camera and electric fencing on a perimeter wall"
-            width={1408}
-            height={1008}
-            loading="lazy"
-            className="w-full rounded-sm object-cover"
-          />
-        </div>
+          <div className="overflow-hidden rounded-sm">
+            <img
+              src={installationsImage}
+              alt="Technician installing an outdoor CCTV camera and electric fencing on a perimeter wall"
+              width={1408}
+              height={1008}
+              loading="lazy"
+              className="w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );

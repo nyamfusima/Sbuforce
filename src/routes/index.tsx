@@ -3,12 +3,13 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { Services } from "@/components/site/Services";
-import { Compliance } from "@/components/site/Compliance";
 import { Sectors } from "@/components/site/Sectors";
-import { Credentials } from "@/components/site/Credentials";
+import { Trust } from "@/components/site/Trust";
+import { FAQ } from "@/components/site/FAQ";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
+import { serviceGroups, faqs } from "@/lib/company";
 
 const title = "SbuForce Security | Guarding, CCTV & Armed Response";
 const description =
@@ -44,6 +45,20 @@ export const Route = createFileRoute("/")({
             addressRegion: "Gauteng",
             addressCountry: "ZA",
           },
+          areaServed: "Gauteng, South Africa",
+          serviceType: serviceGroups.flatMap((group) => group.items.map((item) => item.title)),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
         }),
       },
     ],
@@ -59,9 +74,9 @@ function Index() {
         <Hero />
         <About />
         <Services />
-        <Compliance />
         <Sectors />
-        <Credentials />
+        <Trust />
+        <FAQ />
         <Contact />
       </main>
       <SiteFooter />

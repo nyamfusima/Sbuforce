@@ -1,6 +1,9 @@
 import logo from "@/assets/sbuforce-logo.png";
 import { company } from "@/lib/company";
 
+/** The mission statement's closing line, reused here as a short footer tagline. */
+const tagline = "Creating the peace of mind you deserve.";
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-primary py-12 text-primary-foreground">
@@ -18,6 +21,7 @@ export function SiteFooter() {
           <p className="mt-2 text-xs text-primary-foreground/60">
             PSIRA Registered Security Company
           </p>
+          <p className="mt-4 max-w-[26ch] text-sm text-primary-foreground/70 italic">{tagline}</p>
         </div>
 
         <nav aria-label="Footer" className="text-sm">

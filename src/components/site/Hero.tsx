@@ -1,4 +1,4 @@
-import { ShieldCheck, ArrowUpRight } from "lucide-react";
+import { ShieldCheck, ArrowUpRight, Award, Clock, MapPin } from "lucide-react";
 import heroBackdrop from "@/assets/hero-backdrop.jpg";
 import guardCutout from "@/assets/guard-cutout.png";
 import { yearsOperating } from "@/lib/company";
@@ -26,23 +26,29 @@ export function Hero() {
         alt="Security officer on duty responding on a two-way radio"
         width={661}
         height={565}
-        className="pointer-events-none absolute bottom-4 left-1/2 -z-10 h-[38%] w-auto -translate-x-1/2 object-contain object-bottom opacity-60 sm:h-[60%] md:bottom-12 md:left-auto md:right-4 md:h-[88%] md:translate-x-0 lg:right-12"
+        className="pointer-events-none absolute bottom-10 left-1/2 -z-10 h-[42%] w-auto -translate-x-1/2 object-contain object-bottom opacity-60 sm:bottom-12 sm:h-[64%] md:bottom-16 md:left-auto md:right-4 md:h-[88%] md:translate-x-0 lg:right-12"
       />
 
       <div className="shell pt-20 pb-10 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-14">
-        <div className="max-w-2xl [animation:hero-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both]">
-          <p className="eyebrow">PSIRA Registered Security Company</p>
+        <div className="max-w-2xl">
+          <p className="eyebrow [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_both]">
+            PSIRA Registered Security Company
+          </p>
           <h1 className="mt-5 text-4xl leading-[1.05] font-bold sm:text-5xl lg:text-6xl">
-            <span className="block">Security guard services</span>
-            <span className="block text-gold">you can trust</span>
+            <span className="block [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_0.1s_both]">
+              Security guard services
+            </span>
+            <span className="block text-gold [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_0.2s_both]">
+              you can trust
+            </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85 sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85 [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_0.3s_both] sm:text-lg">
             Whether your concerns are Corporate, Commercial, Industrial or Residential, we provide
             you with the ultimate in security and confidentiality you demand — creating the peace of
             mind you deserve.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_0.4s_both] sm:flex-row">
             <a
               href="#contact"
               className="font-display inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-7 py-4 text-sm tracking-[0.14em] text-gold-foreground uppercase transition-all duration-200 hover:-translate-y-0.5 hover:bg-gold/85"
@@ -59,9 +65,10 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-12 grid grid-cols-1 gap-6 border-t border-white/10 pt-8 sm:grid-cols-3">
+          <dl className="mt-12 grid grid-cols-1 gap-6 border-t border-white/10 pt-8 [animation:hero-in_0.7s_cubic-bezier(0.16,1,0.3,1)_0.5s_both] sm:grid-cols-3">
             <div>
-              <dt className="text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
+              <Award aria-hidden="true" className="size-4 text-gold" />
+              <dt className="mt-2 text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
                 Experience
               </dt>
               <dd className="font-display mt-1 text-xl">
@@ -69,7 +76,8 @@ export function Hero() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
+              <Clock aria-hidden="true" className="size-4 text-gold" />
+              <dt className="mt-2 text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
                 Control Room
               </dt>
               <dd className="font-display mt-1 text-xl">
@@ -77,7 +85,8 @@ export function Hero() {
               </dd>
             </div>
             <div>
-              <dt className="text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
+              <MapPin aria-hidden="true" className="size-4 text-gold" />
+              <dt className="mt-2 text-xs tracking-[0.16em] text-primary-foreground/55 uppercase">
                 Based in
               </dt>
               <dd className="font-display mt-1 text-xl">Germiston, Gauteng</dd>

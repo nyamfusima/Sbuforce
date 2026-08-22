@@ -1,5 +1,5 @@
 import { management } from "@/lib/company";
-import { Reveal } from "@/components/site/Reveal";
+import { Reveal, RevealGroup } from "@/components/site/Reveal";
 import sibusisoPhoto from "@/assets/sibusiso-nkosi.png";
 import lindelwaPhoto from "@/assets/lindelwa-mafa.png";
 
@@ -16,7 +16,7 @@ export function Team() {
           <span className="gold-rule mt-5" />
         </Reveal>
 
-        <Reveal
+        <RevealGroup
           as="div"
           className="mt-10 flex flex-col gap-1 overflow-hidden rounded-sm sm:h-[26rem] sm:flex-row"
         >
@@ -24,7 +24,8 @@ export function Team() {
             <div
               key={person.name}
               tabIndex={0}
-              className="team-panel group relative h-72 overflow-hidden bg-primary outline-none sm:h-full"
+              className="team-panel reveal-item group relative h-72 overflow-hidden bg-primary outline-none sm:h-full"
+              style={{ "--reveal-i": i } as React.CSSProperties}
             >
               <img
                 src={teamPhotos[i]}
@@ -44,7 +45,7 @@ export function Team() {
               </div>
             </div>
           ))}
-        </Reveal>
+        </RevealGroup>
       </div>
     </section>
   );

@@ -217,6 +217,23 @@
   }
 }
 
+/* Team section: hover-accordion panels (widen on hover/focus), pure CSS. */
+@utility team-panel {
+  flex: 1 1 0%;
+  transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-panel:hover,
+.team-panel:focus-within {
+  flex-grow: 1.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .team-panel {
+    transition: none;
+  }
+}
+
 /*
  * Motion system.
  *

@@ -58,11 +58,14 @@ Current section order and treatment (top to bottom in [src/routes/index.tsx](src
 1. **Hero** — dark, backdrop + foreground guard composite (see section 12–13)
 2. **Trust ticker** — a slim `bg-graphite` strip directly under the hero: an infinite CSS marquee of the real `trustBadges` behind a "Registrations & Compliance" label. This replaces the generic "logo cloud of client brands" pattern some templates use — SbuForce has no client logos to show, so the honest equivalent is its own real registrations, not a fabricated client list.
 3. **About** — light, split two-column (copy + sticky control-room photo)
-4. **Services** — dark, two service groups with a featured/secondary hierarchy + installations split block
-5. **Sectors ("Who We Protect")** — secondary (deeper neutral), tag-style list of real customer segments + coverage note
-6. **Trust ("Why Clients Trust Us")** — dark, a real-numbers stat band + guard-vetting points + a compact trust-badge row + leadership credit (see section 19)
-7. **FAQ** — light, real questions answered from facts that exist elsewhere on the site
-8. **Contact** — light, form + contact-detail cards
+4. **Team ("The people behind SbuForce")** — secondary background, a two-panel hover-accordion of the two real directors' photos (see below). This is the one and only place their photos/names/roles appear — don't re-add a leadership block elsewhere (see section 19).
+5. **Services** — dark, two service groups with a featured/secondary hierarchy + installations split block
+6. **Sectors ("Who We Protect")** — secondary (deeper neutral), tag-style list of real customer segments + coverage note
+7. **Trust ("Why Clients Trust Us")** — dark, a real-numbers stat band + guard-vetting points + a compact trust-badge row (no leadership content — that moved to the dedicated Team section, see section 19)
+8. **FAQ** — light, real questions answered from facts that exist elsewhere on the site
+9. **Contact** — light, form + contact-detail cards
+
+**Team section** ([Team.tsx](src/components/site/Team.tsx)): two photo panels in a flex row, each `team-panel` (a CSS utility in [styles.css](src/styles.css) that transitions `flex-grow` on `:hover`/`:focus-within`) — hovering one panel widens it and narrows the other, an image-accordion effect done in pure CSS, no JS/animation library. Name and role sit in an always-visible caption over a gradient scrim at the bottom of each panel — the hover effect is a bonus flourish, never required to read who's who (`tabIndex={0}` + `:focus-within` means keyboard users get the same widen effect on focus). Photos come from real client-supplied headshots, background-removed and cropped to content bounds before landing in `src/assets/` — same rule as the hero cutout in section 12–13. If a third team member is ever added, the flex-row approach scales, but re-check that hovering one of three doesn't make the other two too narrow to read.
 
 This dark/light/secondary alternation is intentional and load-bearing for visual rhythm — preserve it when adding or reordering sections. Layouts already vary (full-width grids, two-column splits, sticky image) rather than repeating one `[icon][heading][text][button]` block; keep that variation when adding sections instead of defaulting to a generic feature-card grid.
 

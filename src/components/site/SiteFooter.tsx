@@ -29,6 +29,11 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
+              <a href="#team" className="hover:text-gold">
+                Team
+              </a>
+            </li>
+            <li>
               <a href="#services" className="hover:text-gold">
                 Services
               </a>

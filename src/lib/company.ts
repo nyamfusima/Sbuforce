@@ -164,16 +164,16 @@ export const management = [
   {
     name: "Mr. Sibusiso Nkosi",
     role: "Managing Director",
-    cell: "078 798 4296",
-    tel: "+27787984296",
+    cell: "076 057 3474",
+    tel: "+27760573474",
     email: "nkosi@sbuforcesecurity.co.za",
   },
   {
-    name: "Mrs. Sizeka Stiwa",
+    name: "Mrs. Lindelwa Mafa",
     role: "Director",
-    cell: "073 176 6553",
-    tel: "+27731766553",
-    email: "sizeka@sbuforcesecurity.co.za",
+    cell: "074 612 0192",
+    tel: "+27746120192",
+    email: "mafalindelwa67@gmail.com",
   },
 ];
 

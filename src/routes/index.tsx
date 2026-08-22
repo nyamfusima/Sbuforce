@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { Hero } from "@/components/site/Hero";
 import { TrustTicker } from "@/components/site/TrustTicker";
 import { About } from "@/components/site/About";
+import { Team } from "@/components/site/Team";
 import { Services } from "@/components/site/Services";
 import { Sectors } from "@/components/site/Sectors";
 import { Trust } from "@/components/site/Trust";
@@ -10,7 +11,7 @@ import { FAQ } from "@/components/site/FAQ";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
-import { serviceGroups, faqs } from "@/lib/company";
+import { company, serviceGroups, faqs } from "@/lib/company";
 
 const title = "SbuForce Security | Guarding, CCTV & Armed Response";
 const description =
@@ -36,8 +37,8 @@ export const Route = createFileRoute("/")({
           legalName: "SBUFORCE SECURITY (PTY) LTD",
           foundingDate: "2020",
           url: "https://www.sbuforcesecurity.co.za",
-          telephone: ["+27787984296", "+27731766553", "+27113955709"],
-          email: "nkosi@sbuforcesecurity.co.za",
+          telephone: company.phones.map((phone) => phone.tel),
+          email: company.emails[0],
           address: {
             "@type": "PostalAddress",
             streetAddress: "437 Sam Green Street, Tunney Industrial Meadowdale",
@@ -75,6 +76,7 @@ function Index() {
         <Hero />
         <TrustTicker />
         <About />
+        <Team />
         <Services />
         <Sectors />
         <Trust />

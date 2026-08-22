@@ -1,12 +1,5 @@
 import { ShieldCheck, BadgeCheck } from "lucide-react";
-import {
-  compliance,
-  trustBadges,
-  management,
-  sectors,
-  serviceGroups,
-  yearsOperating,
-} from "@/lib/company";
+import { compliance, trustBadges, sectors, serviceGroups, yearsOperating } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 
@@ -81,19 +74,6 @@ export function Trust() {
           <p className="mt-4 text-sm text-primary-foreground/55">
             Full registration and compliance documents are available on request.
           </p>
-        </Reveal>
-
-        <Reveal as="div" className="mt-14">
-          <h3 className="text-lg font-semibold">Leadership</h3>
-          <span className="gold-rule mt-3" />
-          <ul className="mt-5 flex flex-wrap gap-x-12 gap-y-4">
-            {management.map((person) => (
-              <li key={person.name}>
-                <p className="text-base font-semibold">{person.name}</p>
-                <p className="eyebrow mt-1">{person.role}</p>
-              </li>
-            ))}
-          </ul>
         </Reveal>
       </div>
     </section>

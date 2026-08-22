@@ -22,20 +22,20 @@ export const company = {
   phones: [
     {
       label: "Managing Director",
-      value: "+27 (0) 78 798 4296",
-      tel: "+27787984296",
-      whatsapp: "27787984296",
+      value: "+27 (0) 76 057 3474",
+      tel: "+27760573474",
+      whatsapp: "27760573474",
     },
     {
       label: "Director",
-      value: "+27 (0) 73 176 6553",
-      tel: "+27731766553",
-      whatsapp: "27731766553",
+      value: "+27 (0) 74 612 0192",
+      tel: "+27746120192",
+      whatsapp: "27746120192",
     },
-    { label: "Office", value: "+27 (0) 11 395 5709", tel: "+27113955709" },
+    { label: "Office", value: "+27 (0) 10 225 2247", tel: "+27102252247" },
     { label: "Fax / Share call", value: "+27 (0) 86 471 9877", tel: "+27864719877" },
   ],
-  emails: ["nkosi@sbuforcesecurity.co.za", "sizeka@sbuforcesecurity.co.za"],
+  emails: ["nkosi@sbuforcesecurity.co.za", "mafalindelwa67@gmail.com"],
   address: {
     lines: ["437 Sam Green Street", "Tunney Industrial Meadowdale", "Germiston", "1400"],
     short: "Meadowdale, Germiston, Gauteng",

@@ -1,21 +1,32 @@
 import { ShieldCheck, ArrowUpRight } from "lucide-react";
-import heroImage from "@/assets/hero-guard.jpg";
+import heroBackdrop from "@/assets/hero-backdrop.jpg";
+import guardCutout from "@/assets/guard-cutout.png";
 import { yearsOperating } from "@/lib/company";
 import { Counter } from "@/components/site/Counter";
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate bg-primary text-primary-foreground">
+    <section
+      id="top"
+      className="relative isolate overflow-hidden bg-primary text-primary-foreground"
+    >
       <img
-        src={heroImage}
-        alt="SbuForce Security guard on duty at the access gate of an industrial business park"
-        width={1600}
+        src={heroBackdrop}
+        alt="Industrial business park access road with security boom gate at dusk"
+        width={820}
         height={1104}
-        className="absolute inset-0 -z-10 size-full object-cover object-[60%_center] opacity-45"
+        className="absolute inset-0 -z-20 size-full object-cover opacity-60"
       />
       <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/85 to-primary/40"
+        className="absolute inset-0 -z-20 bg-gradient-to-r from-primary via-primary/80 to-primary/20"
         aria-hidden="true"
+      />
+      <img
+        src={guardCutout}
+        alt="Security officer on duty responding on a two-way radio"
+        width={434}
+        height={359}
+        className="pointer-events-none absolute right-0 bottom-6 -z-10 hidden h-[88%] w-auto object-contain object-bottom opacity-60 sm:right-4 md:block lg:right-12"
       />
 
       <div className="shell py-20 sm:py-28 lg:py-36">

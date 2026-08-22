@@ -104,7 +104,7 @@ Flat, bordered, generously padded (`p-6`–`p-7`), one icon (Lucide, `size-5`/`s
 
 ## 11. Hero section
 
-One `h1`, one supporting paragraph, two CTAs max (primary + secondary), one real-data strip (Experience / Control Room hours / Location, all from `company.ts`), one photo. No floating stat cards, no badge clusters, no carousel. The sub-bar below the hero (armed-response note + office number) is the only additional element, and it's informational, not decorative.
+One `h1`, one supporting paragraph, two CTAs max (primary + secondary), one real-data strip (Experience / Control Room hours / Location, all from `company.ts`), one photo composite (backdrop + foreground figure — see section 12–13). No floating stat cards, no badge clusters, no carousel. The sub-bar below the hero (armed-response note) is the only additional element, and it's informational, not decorative.
 
 The eyebrow above the `h1` reads "PSIRA Registered Security Company" — a status, not "PSIRA No. 3132804 | Reg No. 2020/232382/07". Never put a raw registration number back in the hero (see section 18). The "Experience" stat is `yearsOperating` from `company.ts` — computed from the founding year at render time (`new Date().getFullYear() - Number(company.founded)`), never a hand-typed number that will silently go stale.
 
@@ -112,10 +112,16 @@ The `h1` is set as two stacked lines (`<span className="block">`), not one run-o
 
 ## 12–13. Images & photography
 
-- Three photos currently used, all specific to the actual business: a guard at an industrial access gate ([hero-guard.jpg](src/assets/hero-guard.jpg)), an operator at a control-room monitoring wall ([control-room.jpg](src/assets/control-room.jpg)), a technician installing CCTV on an electric-fenced perimeter ([installations.jpg](src/assets/installations.jpg)). None are generic stock (no suits-in-a-boardroom, no stock police cars, no guns, no anonymous skyscrapers).
+- Photos in use: the Hero composite (see below), an operator at a control-room monitoring wall ([control-room.jpg](src/assets/control-room.jpg)), a technician installing CCTV on an electric-fenced perimeter ([installations.jpg](src/assets/installations.jpg)). None are generic stock (no suits-in-a-boardroom, no stock police cars, no guns, no anonymous skyscrapers).
 - Every image ships a specific, descriptive `alt` attribute describing what's actually happening in the photo — not the filename, not "security image."
-- Treatment: `rounded-sm`, `object-cover`, explicit `width`/`height` to prevent layout shift, `loading="lazy"` on everything below the fold.
+- Treatment: `rounded-sm` on standard photos, `object-cover`, explicit `width`/`height` to prevent layout shift, `loading="lazy"` on everything below the fold.
 - If new photography is added, it must be sourced or approved by the client and depict the real service being described (guarding, patrol, control room, installation) — never a stand-in stock image chosen because it "looks like security."
+
+**Hero composite** ([Hero.tsx](src/components/site/Hero.tsx)): the hero is built from two layered images rather than one full-bleed photo:
+- [hero-backdrop.jpg](src/assets/hero-backdrop.jpg) — the environment (boom gate, road, building, sunset), cropped from the original site photo to exclude any person, at `opacity-60` with the usual left-to-right gradient scrim over it for text legibility.
+- [guard-cutout.png](src/assets/guard-cutout.png) — a background-removed guard photo (real alpha transparency, cropped tight to content), positioned `absolute right-0 bottom-0` at full opacity/no dimming so it reads as a sharp foreground subject against the dim backdrop. Hidden below `md:` — on mobile the hero is backdrop + text only, no foreground figure, to avoid crowding a narrow viewport (an intentional mobile simplification, not a bug).
+- If this composite is ever revisited: the backdrop crop and the cutout's positioning were tuned together (the backdrop was deliberately cropped to exclude where a person would have been, so the cutout has clean environment behind it) — don't swap one half without checking the other still makes sense.
+- Cutout images should arrive already background-removed (client-supplied, or processed via a tool such as `rembg`/remove.bg) and get cropped to their alpha bounding box before landing in `src/assets/` — don't ship an untrimmed cutout with a large transparent margin.
 
 ## 14. Animations
 

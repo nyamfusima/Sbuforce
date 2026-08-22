@@ -200,6 +200,23 @@
   background-color: var(--color-gold);
 }
 
+/* Continuous marquee for the trust-badge ticker. Pure CSS, no JS/animation library. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility ticker-track {
+  animation: marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
 /*
  * Motion system.
  *

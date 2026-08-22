@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Globe, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, ArrowUpRight } from "lucide-react";
 import { company, serviceOptions } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
+import { WhatsAppIcon } from "@/components/site/icons/WhatsAppIcon";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
@@ -144,7 +145,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="font-display flex items-center justify-center gap-2 rounded-sm border border-input px-6 py-4 text-sm tracking-[0.14em] uppercase transition-all duration-200 hover:-translate-y-0.5 hover:border-gold"
             >
-              <MessageCircle aria-hidden="true" className="size-4 text-gold" />
+              <WhatsAppIcon className="size-4 text-gold" />
               Chat on WhatsApp
             </a>
           </form>

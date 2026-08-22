@@ -24,12 +24,12 @@ export function Hero() {
       <img
         src={guardCutout}
         alt="Security officer on duty responding on a two-way radio"
-        width={434}
-        height={359}
-        className="pointer-events-none absolute right-0 bottom-12 -z-10 hidden h-[88%] w-auto object-contain object-bottom opacity-60 sm:right-4 md:block lg:right-12"
+        width={661}
+        height={565}
+        className="pointer-events-none absolute bottom-4 left-1/2 -z-10 h-[38%] w-auto -translate-x-1/2 object-contain object-bottom opacity-60 sm:h-[60%] md:bottom-12 md:left-auto md:right-4 md:h-[88%] md:translate-x-0 lg:right-12"
       />
 
-      <div className="shell py-20 sm:py-28 lg:py-36">
+      <div className="shell pt-20 pb-10 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-14">
         <div className="max-w-2xl [animation:hero-in_0.8s_cubic-bezier(0.16,1,0.3,1)_both]">
           <p className="eyebrow">PSIRA Registered Security Company</p>
           <h1 className="mt-5 text-4xl leading-[1.05] font-bold sm:text-5xl lg:text-6xl">

@@ -55,13 +55,14 @@ Rules:
 
 Current section order and treatment (top to bottom in [src/routes/index.tsx](src/routes/index.tsx)), chosen to match customer content priority — who they are, what they do, who they protect, why to trust them, then contact:
 
-1. **Hero** — dark, full-bleed photo
-2. **About** — light, split two-column (copy + sticky control-room photo)
-3. **Services** — dark, two service groups with a featured/secondary hierarchy + installations split block
-4. **Sectors ("Who We Protect")** — secondary (deeper neutral), tag-style list of real customer segments + coverage note
-5. **Trust ("Why Clients Trust Us")** — dark, a real-numbers stat band + guard-vetting points + a compact trust-badge row + leadership credit (see section 19)
-6. **FAQ** — light, real questions answered from facts that exist elsewhere on the site
-7. **Contact** — light, form + contact-detail cards
+1. **Hero** — dark, backdrop + foreground guard composite (see section 12–13)
+2. **Trust ticker** — a slim `bg-graphite` strip directly under the hero: an infinite CSS marquee of the real `trustBadges` behind a "Registrations & Compliance" label. This replaces the generic "logo cloud of client brands" pattern some templates use — SbuForce has no client logos to show, so the honest equivalent is its own real registrations, not a fabricated client list.
+3. **About** — light, split two-column (copy + sticky control-room photo)
+4. **Services** — dark, two service groups with a featured/secondary hierarchy + installations split block
+5. **Sectors ("Who We Protect")** — secondary (deeper neutral), tag-style list of real customer segments + coverage note
+6. **Trust ("Why Clients Trust Us")** — dark, a real-numbers stat band + guard-vetting points + a compact trust-badge row + leadership credit (see section 19)
+7. **FAQ** — light, real questions answered from facts that exist elsewhere on the site
+8. **Contact** — light, form + contact-detail cards
 
 This dark/light/secondary alternation is intentional and load-bearing for visual rhythm — preserve it when adding or reordering sections. Layouts already vary (full-width grids, two-column splits, sticky image) rather than repeating one `[icon][heading][text][button]` block; keep that variation when adding sections instead of defaulting to a generic feature-card grid.
 
@@ -87,7 +88,9 @@ Two variants only:
 
 No glow, no box-shadow on buttons, no scale-on-hover, no gradient fills. Colour change plus a small `-translate-y-0.5` lift on hover (see section 14) — nothing larger than a 2px lift.
 
-Every "Request a Quote" / "View Our Services" style CTA carries a small trailing `ArrowUpRight` icon (`size-3.5`–`size-4`, `inline-flex items-center gap-1.5/2`); phone-call buttons carry a `Phone` icon instead (a directional arrow doesn't make sense for "call this number"); the WhatsApp button keeps its `MessageCircle` icon. This was a deliberate, consistent addition across every instance of each button — if you add a new CTA of an existing variant, give it the matching icon; don't leave some buttons iconless and others not.
+Every "Request a Quote" / "View Our Services" style CTA carries a small trailing `ArrowUpRight` icon (`size-3.5`–`size-4`, `inline-flex items-center gap-1.5/2`); phone-call buttons carry a `Phone` icon instead (a directional arrow doesn't make sense for "call this number"). This was a deliberate, consistent addition across every instance of each button — if you add a new CTA of an existing variant, give it the matching icon; don't leave some buttons iconless and others not.
+
+**WhatsApp icon** ([icons/WhatsAppIcon.tsx](src/components/site/icons/WhatsAppIcon.tsx)): a real WhatsApp glyph (not a generic lucide chat-bubble) rendered in its actual brand colours — a green circle with a white phone-in-bubble mark — rather than `currentColor`, specifically so it stays recognisable inside the gold FAB/buttons instead of tinting gold. This is the one place on the site with a colour outside the gold/graphite/cream system, and that's intentional: it's a third-party brand mark used to identify a real link to WhatsApp, not a design accent — don't recolour it to match the palette. The floating WhatsApp FAB ([WhatsAppFab.tsx](src/components/site/WhatsAppFab.tsx)) is icon-only (no "WhatsApp Us" label) — keep it that way; the labelled version only appears inline in the Contact section's secondary button.
 
 ## 9. Cards
 
@@ -119,7 +122,8 @@ The `h1` is set as two stacked lines (`<span className="block">`), not one run-o
 
 **Hero composite** ([Hero.tsx](src/components/site/Hero.tsx)): the hero is built from two layered images rather than one full-bleed photo:
 - [hero-backdrop.jpg](src/assets/hero-backdrop.jpg) — the environment (boom gate, road, building, sunset), cropped from the original site photo to exclude any person, at `opacity-60` with the usual left-to-right gradient scrim over it for text legibility.
-- [guard-cutout.png](src/assets/guard-cutout.png) — a background-removed guard photo (real alpha transparency, cropped tight to content), positioned `absolute right-0 bottom-0` at full opacity/no dimming so it reads as a sharp foreground subject against the dim backdrop. Hidden below `md:` — on mobile the hero is backdrop + text only, no foreground figure, to avoid crowding a narrow viewport (an intentional mobile simplification, not a bug).
+- [guard-cutout.png](src/assets/guard-cutout.png) — a background-removed guard photo (real alpha transparency, cropped tight to content). Also dimmed to `opacity-60` (matching the backdrop) rather than full opacity — the intent is a figure that reads as part of the same moody scene, not a sharp sticker pasted over a dim background.
+- Positioning is responsive, not just "hidden on mobile": below `md:` it's centred (`left-1/2 -translate-x-1/2`) and smaller (`h-[38%]`, `sm:h-[60%]`) so it sits low in the hero without crowding the text stack above it; from `md:` up it switches to right-aligned (`md:left-auto md:right-4 lg:right-12`) at `h-[88%]`. The figure must be visible at every breakpoint — don't reintroduce a `hidden` class to hide it on mobile.
 - If this composite is ever revisited: the backdrop crop and the cutout's positioning were tuned together (the backdrop was deliberately cropped to exclude where a person would have been, so the cutout has clean environment behind it) — don't swap one half without checking the other still makes sense.
 - Cutout images should arrive already background-removed (client-supplied, or processed via a tool such as `rembg`/remove.bg) and get cropped to their alpha bounding box before landing in `src/assets/` — don't ship an untrimmed cutout with a large transparent margin.
 

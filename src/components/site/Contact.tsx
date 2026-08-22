@@ -145,7 +145,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="font-display flex items-center justify-center gap-2 rounded-sm border border-input px-6 py-4 text-sm tracking-[0.14em] uppercase transition-all duration-200 hover:-translate-y-0.5 hover:border-gold"
             >
-              <WhatsAppIcon className="size-4 text-gold" />
+              <WhatsAppIcon className="size-4" />
               Chat on WhatsApp
             </a>
           </form>

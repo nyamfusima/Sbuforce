@@ -10,7 +10,9 @@ export function TrustTicker() {
         </p>
         <div
           className="relative w-full overflow-hidden"
-          style={{ maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)" }}
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
         >
           <div className="ticker-track flex w-max items-center gap-10">
             {[...trustBadges, ...trustBadges].map((badge, i) => (

@@ -26,7 +26,7 @@ export function Hero() {
         alt="Security officer on duty responding on a two-way radio"
         width={434}
         height={359}
-        className="pointer-events-none absolute right-0 bottom-6 -z-10 hidden h-[88%] w-auto object-contain object-bottom opacity-60 sm:right-4 md:block lg:right-12"
+        className="pointer-events-none absolute right-0 bottom-12 -z-10 hidden h-[88%] w-auto object-contain object-bottom opacity-60 sm:right-4 md:block lg:right-12"
       />
 
       <div className="shell py-20 sm:py-28 lg:py-36">

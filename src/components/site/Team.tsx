@@ -8,39 +8,40 @@ const teamPhotos = [sibusisoPhoto, lindelwaPhoto];
 
 export function Team() {
   return (
-    <section id="team" className="bg-secondary py-20 sm:py-24">
+    <section id="team" className="bg-primary py-20 text-primary-foreground sm:py-24">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">Our Team</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">The people behind SbuForce</h2>
+          <h2 className="mt-3 max-w-xl text-3xl font-bold sm:text-4xl">
+            The people behind SbuForce
+          </h2>
           <span className="gold-rule mt-5" />
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/80">
+            The two directors leading SbuForce Security's guarding, monitoring and technical
+            operations.
+          </p>
         </Reveal>
 
-        <RevealGroup
-          as="div"
-          className="mt-10 flex flex-col gap-1 overflow-hidden rounded-sm sm:h-[26rem] sm:flex-row"
-        >
+        <RevealGroup as="div" className="mt-10 flex flex-col gap-8 sm:flex-row sm:gap-1">
           {management.map((person, i) => (
             <div
               key={person.name}
               tabIndex={0}
-              className="team-panel reveal-item group relative h-72 overflow-hidden bg-primary outline-none sm:h-full"
+              className="team-panel reveal-item outline-none"
               style={{ "--reveal-i": i } as React.CSSProperties}
             >
-              <img
-                src={teamPhotos[i]}
-                alt={`${person.name}, ${person.role} at SbuForce Security`}
-                width={400}
-                height={500}
-                loading="lazy"
-                className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent"
-                aria-hidden="true"
-              />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <p className="text-lg font-semibold text-white">{person.name}</p>
+              <div className="h-72 overflow-hidden rounded-sm bg-graphite sm:h-96">
+                <img
+                  src={teamPhotos[i]}
+                  alt={`${person.name}, ${person.role} at SbuForce Security`}
+                  width={400}
+                  height={500}
+                  loading="lazy"
+                  className="size-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 border-l-2 border-gold pl-4">
+                <p className="text-lg font-semibold">{person.name}</p>
                 <p className="eyebrow mt-1">{person.role}</p>
               </div>
             </div>

@@ -15,7 +15,7 @@ export function Hero() {
         alt="Industrial business park access road with security boom gate at dusk"
         width={820}
         height={1104}
-        className="absolute inset-0 -z-20 size-full object-cover opacity-60"
+        className="absolute inset-0 -z-20 size-full object-cover opacity-50"
       />
       <div
         className="absolute inset-0 -z-20 bg-gradient-to-r from-primary via-primary/80 to-primary/20"
@@ -26,7 +26,7 @@ export function Hero() {
         alt="Security officer on duty responding on a two-way radio"
         width={661}
         height={565}
-        className="pointer-events-none absolute bottom-10 left-1/2 -z-10 h-[42%] w-auto -translate-x-1/2 object-contain object-bottom opacity-60 sm:bottom-12 sm:h-[64%] md:bottom-16 md:left-auto md:right-4 md:h-[88%] md:translate-x-0 lg:right-12"
+        className="pointer-events-none absolute bottom-10 left-1/2 -z-10 h-[42%] w-auto -translate-x-1/2 object-contain object-bottom opacity-50 sm:bottom-12 sm:h-[64%] md:bottom-16 md:left-auto md:right-4 md:h-[88%] md:translate-x-0 lg:right-12"
       />
 
       <div className="shell pt-20 pb-10 sm:pt-28 sm:pb-12 lg:pt-36 lg:pb-14">

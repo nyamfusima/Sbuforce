@@ -1,14 +1,18 @@
+import { Phone } from "lucide-react";
 import { management } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
 import sibusisoPhoto from "@/assets/sibusiso-nkosi.png";
 import lindelwaPhoto from "@/assets/lindelwa-mafa.png";
 
-/** Photos in the same order as `management` in company.ts. */
-const teamPhotos = [sibusisoPhoto, lindelwaPhoto];
+/** Photos (background-removed cutouts) in the same order as `management` in company.ts, with intrinsic size for aspect-correct rendering. */
+const teamPhotos = [
+  { src: sibusisoPhoto, width: 190, height: 507 },
+  { src: lindelwaPhoto, width: 375, height: 441 },
+];
 
 export function Team() {
   return (
-    <section id="team" className="bg-primary py-20 text-primary-foreground sm:py-24">
+    <section id="team" className="bg-secondary py-20 sm:py-24">
       <div className="shell">
         <Reveal>
           <p className="eyebrow">Our Team</p>
@@ -16,7 +20,7 @@ export function Team() {
             The people behind SbuForce
           </h2>
           <span className="gold-rule mt-5" />
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/80">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/85">
             The two directors leading SbuForce Security's guarding, monitoring and technical
             operations.
           </p>
@@ -30,19 +34,26 @@ export function Team() {
               className="team-panel reveal-item outline-none"
               style={{ "--reveal-i": i } as React.CSSProperties}
             >
-              <div className="h-72 overflow-hidden rounded-sm bg-graphite sm:h-96">
+              <div className="h-[28rem] overflow-hidden rounded-sm bg-muted sm:h-[34rem] lg:h-[38rem]">
                 <img
-                  src={teamPhotos[i]}
+                  src={teamPhotos[i].src}
                   alt={`${person.name}, ${person.role} at SbuForce Security`}
-                  width={400}
-                  height={500}
+                  width={teamPhotos[i].width}
+                  height={teamPhotos[i].height}
                   loading="lazy"
-                  className="size-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                  className="size-full object-contain object-bottom transition-transform duration-500 hover:scale-105"
                 />
               </div>
               <div className="mt-4 border-l-2 border-gold pl-4">
                 <p className="text-lg font-semibold">{person.name}</p>
                 <p className="eyebrow mt-1">{person.role}</p>
+                <a
+                  href={`tel:${person.tel}`}
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-gold"
+                >
+                  <Phone aria-hidden="true" className="size-3.5 shrink-0" />
+                  {person.cell}
+                </a>
               </div>
             </div>
           ))}

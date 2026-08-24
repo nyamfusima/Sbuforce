@@ -17,7 +17,7 @@ export const company = {
   cipcRegNo: "2020/668823/07",
   psiraNo: "3132804",
   founded: "2020",
-  founder: "Miss Sikeza Stiwa",
+  founder: "Miss Lindelwa Mafa",
   website: "www.sbuforcesecurity.co.za",
   phones: [
     {
@@ -35,7 +35,7 @@ export const company = {
     { label: "Office", value: "+27 (0) 10 225 2247", tel: "+27102252247" },
     { label: "Fax / Share call", value: "+27 (0) 86 471 9877", tel: "+27864719877" },
   ],
-  emails: ["nkosi@sbuforcesecurity.co.za", "mafalindelwa67@gmail.com"],
+  emails: ["nkosi@sbuforcesecurity.co.za", "lindelwa.mafa@sbuforcesecurity.co.za"],
   address: {
     lines: ["437 Sam Green Street", "Tunney Industrial Meadowdale", "Germiston", "1400"],
     short: "Meadowdale, Germiston, Gauteng",
@@ -169,11 +169,11 @@ export const management = [
     email: "nkosi@sbuforcesecurity.co.za",
   },
   {
-    name: "Mrs. Lindelwa Mafa",
+    name: "Miss Lindelwa Mafa",
     role: "Director",
     cell: "074 612 0192",
     tel: "+27746120192",
-    email: "mafalindelwa67@gmail.com",
+    email: "lindelwa.mafa@sbuforcesecurity.co.za",
   },
 ];
 

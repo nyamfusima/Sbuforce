@@ -211,8 +211,14 @@
   animation: marquee 28s linear infinite;
 }
 
+/* Same marquee, slower, for the wider photo cards in the Trust section's guards/vehicles gallery. */
+@utility gallery-track {
+  animation: marquee 50s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ticker-track {
+  .ticker-track,
+  .gallery-track {
     animation: none;
   }
 }

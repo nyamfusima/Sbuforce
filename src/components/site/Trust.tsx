@@ -5,6 +5,9 @@ import { Counter } from "@/components/site/Counter";
 import guardEntrance from "@/assets/guard-entrance.jpg";
 import patrolVehicleBmw from "@/assets/patrol-vehicle-bmw.jpg";
 import guardPatrolVehicle from "@/assets/guard-patrol-vehicle.jpg";
+import patrolVehicleHatchback from "@/assets/patrol-vehicle-hatchback.jpg";
+import guardWithVehicle from "@/assets/guard-with-vehicle.jpg";
+import patrolVehiclePolo from "@/assets/patrol-vehicle-polo.jpg";
 
 const totalServices = serviceGroups.flatMap((group) => group.items).length;
 
@@ -27,14 +30,35 @@ const proofPhotos = [
     width: 720,
     height: 960,
     alt: "Marked SbuForce Security patrol vehicle",
-    caption: "Marked vehicles for site patrols.",
+    caption: "Marked response vehicle on call.",
   },
   {
     src: guardPatrolVehicle,
     width: 1200,
     height: 1600,
     alt: "SbuForce Security guard in a marked patrol vehicle",
-    caption: "Contactable guards, clearly branded vehicles.",
+    caption: "Guards patrol in clearly branded vehicles.",
+  },
+  {
+    src: patrolVehicleHatchback,
+    width: 810,
+    height: 1080,
+    alt: "Marked SbuForce Security patrol vehicle",
+    caption: "Marked vehicles for site patrols.",
+  },
+  {
+    src: guardWithVehicle,
+    width: 1200,
+    height: 1600,
+    alt: "SbuForce Security guard standing beside a marked patrol vehicle",
+    caption: "Contactable guards at every site.",
+  },
+  {
+    src: patrolVehiclePolo,
+    width: 640,
+    height: 640,
+    alt: "Marked SbuForce Security patrol vehicle parked on site",
+    caption: "Fleet ready across our coverage area.",
   },
 ];
 
@@ -87,29 +111,32 @@ export function Trust() {
           <h3 className="text-lg font-semibold">Our Guards & Vehicles</h3>
           <span className="gold-rule mt-3" />
         </Reveal>
-        <RevealGroup as="div" className="mt-5 grid gap-4 sm:grid-cols-3">
-          {proofPhotos.map((photo, i) => (
-            <figure
-              key={photo.alt}
-              className="reveal-item"
-              style={{ "--reveal-i": i } as React.CSSProperties}
-            >
-              <div className="aspect-[3/4] overflow-hidden rounded-sm bg-graphite">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  loading="lazy"
-                  className="size-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <figcaption className="mt-3 border-l-2 border-gold pl-4 text-sm text-primary-foreground/70">
-                {photo.caption}
-              </figcaption>
-            </figure>
-          ))}
-        </RevealGroup>
+        <div
+          className="relative mt-5 w-full overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
+          }}
+        >
+          <div className="gallery-track flex w-max items-start gap-5">
+            {[...proofPhotos, ...proofPhotos].map((photo, i) => (
+              <figure key={`${photo.alt}-${i}`} className="w-48 shrink-0 sm:w-56">
+                <div className="aspect-[3/4] overflow-hidden rounded-sm bg-graphite">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={photo.width}
+                    height={photo.height}
+                    loading="lazy"
+                    className="size-full object-cover"
+                  />
+                </div>
+                <figcaption className="mt-3 border-l-2 border-gold pl-3 text-xs text-primary-foreground/70">
+                  {photo.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
 
         <Reveal as="div" className="mt-14">
           <h3 className="text-lg font-semibold">Registrations & Compliance</h3>

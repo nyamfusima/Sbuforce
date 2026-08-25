@@ -10,6 +10,9 @@ import {
   Fingerprint,
 } from "lucide-react";
 import installationsImage from "@/assets/installations.jpg";
+import patrolVehicleHatchback from "@/assets/patrol-vehicle-hatchback.jpg";
+import guardWithVehicle from "@/assets/guard-with-vehicle.jpg";
+import patrolVehiclePolo from "@/assets/patrol-vehicle-polo.jpg";
 import { serviceGroups, installations, cctvDetail } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
 
@@ -17,6 +20,30 @@ const groupIcons = [
   [UserRound, Footprints, Home, Siren],
   [MonitorPlay, Cctv, BellRing, Zap, Fingerprint],
 ] as const;
+
+const fleetPhotos = [
+  {
+    src: patrolVehicleHatchback,
+    width: 810,
+    height: 1080,
+    alt: "Marked SbuForce Security patrol vehicle",
+    caption: "Marked vehicles for guarding and patrol contracts.",
+  },
+  {
+    src: guardWithVehicle,
+    width: 1200,
+    height: 1600,
+    alt: "SbuForce Security guard standing beside a marked patrol vehicle",
+    caption: "Guards patrol in clearly marked vehicles.",
+  },
+  {
+    src: patrolVehiclePolo,
+    width: 640,
+    height: 640,
+    alt: "Marked SbuForce Security patrol vehicle parked on site",
+    caption: "Response vehicles ready across our fleet.",
+  },
+];
 
 export function Services() {
   return (
@@ -42,26 +69,52 @@ export function Services() {
               </Reveal>
 
               {isPrimary ? (
-                <RevealGroup as="ul" className="mt-8 grid gap-4 sm:grid-cols-2">
-                  {group.items.map((service, i) => {
-                    const Icon = icons[i % icons.length]!;
-                    return (
-                      <li
-                        key={service.title}
-                        className="reveal-item border border-white/12 bg-graphite p-7 transition-all duration-200 hover:-translate-y-1 hover:border-gold/40"
+                <>
+                  <RevealGroup as="ul" className="mt-8 grid gap-4 sm:grid-cols-2">
+                    {group.items.map((service, i) => {
+                      const Icon = icons[i % icons.length]!;
+                      return (
+                        <li
+                          key={service.title}
+                          className="reveal-item border border-white/12 bg-graphite p-7 transition-all duration-200 hover:-translate-y-1 hover:border-gold/40"
+                          style={{ "--reveal-i": i } as React.CSSProperties}
+                        >
+                          <Icon aria-hidden="true" className="size-6 text-gold" />
+                          <h4 className="mt-5 text-lg font-semibold">{service.title}</h4>
+                          {service.description && (
+                            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+                              {service.description}
+                            </p>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </RevealGroup>
+
+                  <RevealGroup as="div" className="mt-4 grid gap-4 sm:grid-cols-3">
+                    {fleetPhotos.map((photo, i) => (
+                      <figure
+                        key={photo.alt}
+                        className="reveal-item"
                         style={{ "--reveal-i": i } as React.CSSProperties}
                       >
-                        <Icon aria-hidden="true" className="size-6 text-gold" />
-                        <h4 className="mt-5 text-lg font-semibold">{service.title}</h4>
-                        {service.description && (
-                          <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
-                            {service.description}
-                          </p>
-                        )}
-                      </li>
-                    );
-                  })}
-                </RevealGroup>
+                        <div className="aspect-[3/4] overflow-hidden rounded-sm bg-graphite">
+                          <img
+                            src={photo.src}
+                            alt={photo.alt}
+                            width={photo.width}
+                            height={photo.height}
+                            loading="lazy"
+                            className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                        <figcaption className="mt-3 border-l-2 border-gold pl-4 text-sm text-primary-foreground/70">
+                          {photo.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </RevealGroup>
+                </>
               ) : (
                 <RevealGroup
                   as="ul"

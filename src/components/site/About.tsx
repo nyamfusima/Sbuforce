@@ -1,4 +1,4 @@
-import controlRoom from "@/assets/control-room.jpg";
+import staffOperations from "@/assets/staff-operations.jpg";
 import { company, mission, vision } from "@/lib/company";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -40,10 +40,10 @@ export function About() {
         <Reveal as="figure" className="lg:sticky lg:top-28">
           <div className="overflow-hidden rounded-sm">
             <img
-              src={controlRoom}
-              alt="Operator monitoring client CCTV cameras in the SbuForce Security 24 hour control room"
-              width={1408}
-              height={1008}
+              src={staffOperations}
+              alt="SbuForce Security staff member at a workstation in the company's Meadowdale office"
+              width={720}
+              height={961}
               loading="lazy"
               className="w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
             />

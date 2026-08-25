@@ -2,6 +2,9 @@ import { ShieldCheck, BadgeCheck } from "lucide-react";
 import { compliance, trustBadges, sectors, serviceGroups, yearsOperating } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
+import guardEntrance from "@/assets/guard-entrance.jpg";
+import patrolVehicleBmw from "@/assets/patrol-vehicle-bmw.jpg";
+import guardPatrolVehicle from "@/assets/guard-patrol-vehicle.jpg";
 
 const totalServices = serviceGroups.flatMap((group) => group.items).length;
 
@@ -9,6 +12,30 @@ const stats = [
   { target: yearsOperating, label: "Years of Experience" },
   { target: sectors.length, label: "Sectors We Guard" },
   { target: totalServices, label: "Security Services" },
+];
+
+const proofPhotos = [
+  {
+    src: guardEntrance,
+    width: 960,
+    height: 1280,
+    alt: "SbuForce Security guard on duty in uniform at a client site",
+    caption: "On duty in full SbuForce uniform.",
+  },
+  {
+    src: patrolVehicleBmw,
+    width: 720,
+    height: 960,
+    alt: "Marked SbuForce Security patrol vehicle",
+    caption: "Marked vehicles for site patrols.",
+  },
+  {
+    src: guardPatrolVehicle,
+    width: 1200,
+    height: 1600,
+    alt: "SbuForce Security guard in a marked patrol vehicle",
+    caption: "Contactable guards, clearly branded vehicles.",
+  },
 ];
 
 export function Trust() {
@@ -53,6 +80,34 @@ export function Trust() {
               <ShieldCheck aria-hidden="true" className="size-5 text-gold" />
               <p className="mt-4 text-sm leading-relaxed text-primary-foreground/85">{point}</p>
             </li>
+          ))}
+        </RevealGroup>
+
+        <Reveal as="div" className="mt-14">
+          <h3 className="text-lg font-semibold">Our Guards & Vehicles</h3>
+          <span className="gold-rule mt-3" />
+        </Reveal>
+        <RevealGroup as="div" className="mt-5 grid gap-4 sm:grid-cols-3">
+          {proofPhotos.map((photo, i) => (
+            <figure
+              key={photo.alt}
+              className="reveal-item"
+              style={{ "--reveal-i": i } as React.CSSProperties}
+            >
+              <div className="aspect-[3/4] overflow-hidden rounded-sm bg-graphite">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  loading="lazy"
+                  className="size-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+              <figcaption className="mt-3 border-l-2 border-gold pl-4 text-sm text-primary-foreground/70">
+                {photo.caption}
+              </figcaption>
+            </figure>
           ))}
         </RevealGroup>
 

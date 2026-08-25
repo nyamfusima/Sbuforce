@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { management } from "@/lib/company";
 import { Reveal, RevealGroup } from "@/components/site/Reveal";
 import sibusisoPhoto from "@/assets/sibusiso-nkosi.png";
@@ -40,7 +40,7 @@ export function Team() {
                   width={teamPhotos[i].width}
                   height={teamPhotos[i].height}
                   loading="lazy"
-                  className="size-full object-contain object-bottom"
+                  className="size-full scale-110 object-contain object-bottom"
                 />
               </div>
               <div className="mt-5 border-l-2 border-gold pl-4">
@@ -52,6 +52,13 @@ export function Team() {
                 >
                   <Phone aria-hidden="true" className="size-3.5 shrink-0" />
                   {person.cell}
+                </a>
+                <a
+                  href={`mailto:${person.email}`}
+                  className="mt-1.5 flex items-center gap-1.5 text-sm break-all text-muted-foreground transition-colors hover:text-gold"
+                >
+                  <Mail aria-hidden="true" className="size-3.5 shrink-0" />
+                  {person.email}
                 </a>
               </div>
             </div>

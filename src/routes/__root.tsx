@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Maintenance } from "../components/site/Maintenance";
+import { isMaintenanceMode } from "../lib/maintenance";
 
 function NotFoundComponent() {
   return (
@@ -85,6 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      ...(isMaintenanceMode ? [{ name: "robots", content: "noindex, nofollow" }] : []),
     ],
     links: [
       {
@@ -122,6 +125,13 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  if (isMaintenanceMode) {
+    // Deliberately skip QueryClientProvider/Outlet: no child route (including
+    // /, 404, and any future route) ever mounts while this is true, so the
+    // maintenance screen can't be bypassed by navigating directly to a URL.
+    return <Maintenance />;
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
